@@ -123,13 +123,13 @@
 <잘못된 코드><br>
 슈퍼키 테이블인 TBL_MEMBER에 먼저 insert 한 후 서브키 테이블인 TBL_COMPANY_MEMBER에 입력을 하려고 했다. TBL_MEMBER에 입력을 하는 쿼리에 문제가 없어보였으나 기업 회원가입 정보를 입력해도 가입 처리가 안 되었다.
 
-![에러 내용 이미지](images/8.png)
+![에러 내용 이미지](images/8.png)<br>
 <오류 화면><br>
 이미 insert 된 TBL_MEMBER 테이블에서 이후 id로 member를 조회한 후 그 id를 TBL_COMPANY_MEMBER에 넣으려 했는데 TBL_MEMBER의 정보를 출력하려 해도 계속 id 컬럼이 null로 출력이 되었다.
 
 ### 6-2 해결
 
-![완성 코드 이미지](images/7.png)
+![완성 코드 이미지](images/7.png)<br>
 <완성 코드><br>
 🔍insert 구문에 `selectKey`를 추가하여, INSERT 이후 생성된 키 값을 자동으로 가져올 수 있도록 설정했다.
 
