@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>템프 | 공고 상세정보</title>
+    <link
+            rel="stylesheet"
+            href="/css/main/program-detail.css"
+    />
+    <link rel="stylesheet" href="/css/member/header.css">
+    <link
+            rel="shortcut icon"
+            href="https://jumpit.saramin.co.kr/favicon.ico"
+            type="image/x-icon"
+    />
+</head>
+<body th:object="${programInfo}">
+<!-- 헤더 시작 -->
+<header th:replace="~{main/header.html :: .header-sc}"></header>
+<!-- // 헤더 끝 -->
+<!-- 메인 시작 -->
+<main>
+    <div class="mainWrapper" >
+        <!-- 메인 정보 시작 -->
+        <section class="mainContent">
+            <div class="contentTitle">
+                <h1 th:text="*{programName}"></h1>
+                <a th:href="|/program/company-info/*{companyId}|" class="name">
+                    <span th:text="*{companyName}"></span>
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            fill="none"
+                            viewBox="0 0 12 12"
+                    >
+                        <path
+                                fill="#222"
+                                fill-rule="evenodd"
+                                d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="positionInfo">
+                <dl class="positionDetail">
+                    <dt class="detailTitle">카테고리</dt>
+                    <dd>
+                        <pre th:text="*{categoryCname}"></pre>
+                    </dd>
+                </dl>
+                <dl class="positionDetail">
+                    <dt class="detailTitle">주요업무</dt>
+                    <dd>
+                                <pre th:text="*{programDetail}">
+                                   </pre>
+                    </dd>
+                </dl>
+                <dl class="positionDetail">
+                    <dt class="detailTitle" >복지 및 혜택</dt>
+                    <dd>
+                        <pre th:text="*{companyWelfare}"></pre>
+                    </dd>
+                </dl>
+                <dl class="positionDetail">
+                    <dt class="detailTitle">
+                        채용절차 및 기타 지원 유의사항
+                    </dt>
+                    <dd>
+                                <pre>
+                                    [채용절차]
+                                    • 서류전형 → 과제전형 → 인적성검사 → 1차 인터뷰 → 2차 인터뷰 → 처우 협의 → 최종합격
+                                    ※절차는 변경될 수 있습니다.
+
+                                    [지원 시 주의사항]
+                                    • 3개월의 수습 기간이 있습니다.(수습 기간 동일 급여와 복리후생 보장)
+
+                                    [참고사항]
+                                    • 본 채용은 수시 진행으로 우수 인재 채용 시 마감될 수 있습니다.
+                            </pre
+                            >
+                    </dd>
+                </dl>
+            </div>
+            <div class="basicInfo">
+                <h2 class="blind">
+                    포지션 학력/마감일/근무지역 정보
+                </h2>
+                <dl class="basicDetail">
+                    <dt>학력</dt>
+                    <dd>무관</dd>
+                </dl>
+                <dl class="basicDetail">
+                    <dt>마감일</dt>
+                    <dd th:text="*{programEndDate}"></dd>
+                </dl>
+                <dl class="basicDetail">
+                    <dt>근무지역</dt>
+                    <dd>
+                        <ul>
+                            <li id="copyText" th:text="*{companyMainAddress}">
+
+                            </li>
+                            <div class="btns">
+                                <div class="address">
+                                    <a th:href="|https://m.map.naver.com/search2/search.nhn?query=*{companyMainAddress}#/map|" class="addressbtn">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                aria-hidden="true"
+                                                class="map"
+                                        >
+                                            <path
+                                                    fill="#222"
+                                                    fill-rule="evenodd"
+                                                    d="M12.25 2C7.687 2 4 5.725 4 10.304c0 1.488.593 3.18 1.631 4.948 1.048 1.783 2.592 3.719 4.606 5.714a2.87 2.87 0 0 0 4.032.016c2.014-1.97 3.558-3.912 4.604-5.707 1.037-1.779 1.627-3.486 1.627-4.971C20.5 5.724 16.813 2 12.25 2ZM6 10.304C6 6.815 8.805 4 12.25 4s6.25 2.815 6.25 6.304c0 .99-.41 2.342-1.355 3.964-.936 1.607-2.358 3.41-4.275 5.284a.87.87 0 0 1-1.225-.006c-1.925-1.908-3.35-3.709-4.29-5.307C6.409 12.626 6 11.294 6 10.304Zm5-.054a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0ZM12.25 7a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5Z"
+                                                    clip-rule="evenodd"
+                                            ></path>
+                                        </svg>
+                                        지도보기
+                                    </a>
+                                    <span
+                                            aria-hidden="true"
+                                            class="addressDeco"
+                                    >·</span
+                                    >
+                                    <button type="button">
+                                                <span style="display: flex">
+                                                    <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            aria-hidden="true"
+                                                            class="copy"
+                                                    >
+                                                        <path
+                                                                fill="#222"
+                                                                fill-rule="evenodd"
+                                                                d="M4.25 5.25a1 1 0 0 1 1-1h6.5a1 1 0 0 1 1 1v.864a1 1 0 1 0 2 0V5.25a3 3 0 0 0-3-3h-6.5a3 3 0 0 0-3 3v6.5a3 3 0 0 0 3 3h.864a1 1 0 1 0 0-2H5.25a1 1 0 0 1-1-1v-6.5Zm8 4a3 3 0 0 0-3 3v6.5a3 3 0 0 0 3 3h6.5a3 3 0 0 0 3-3v-6.5a3 3 0 0 0-3-3h-6.5Zm-1 3a1 1 0 0 1 1-1h6.5a1 1 0 0 1 1 1v6.5a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6.5Z"
+                                                                clip-rule="evenodd"
+                                                        ></path>
+                                                    </svg>
+                                                    주소복사
+                                                </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div class="companyInfo">
+                <h2 class="title">기업/서비스 소개</h2>
+                <a th:href="|/program/company-info/*{companyId}|" class="link">
+                    기업상세 정보로 이동
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            fill="none"
+                            viewBox="0 0 12 12"
+                    >
+                        <path
+                                fill="#222"
+                                fill-rule="evenodd"
+                                d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                </a>
+                <div class="companyImg">
+                    <div class="leftButtonWrapper">
+                        <button type="button" class="leftButton">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="40"
+                                    height="40"
+                                    fill="none"
+                                    viewBox="0 0 40 40"
+                                    aria-hidden="true"
+                            >
+                                <g clip-path="url(#clip0_2450_17212)">
+                                    <path
+                                            stroke="#444"
+                                            d="M39.5 20c0 10.77-8.73 19.5-19.5 19.5S.5 30.77.5 20 9.23.5 20 .5 39.5 9.23 39.5 20Z"
+                                    ></path>
+                                    <path
+                                            fill="#444"
+                                            fill-rule="evenodd"
+                                            d="M23.09 26.84a.833.833 0 0 1-1.179 0l-6.25-6.25a.833.833 0 0 1 0-1.18l6.25-6.25a.833.833 0 0 1 1.179 1.18L17.43 20l5.66 5.66a.833.833 0 0 1 0 1.18Z"
+                                            clip-rule="evenodd"
+                                    ></path>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="rightButtonWrapper">
+                        <button type="button" class="rightButton">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="40"
+                                    height="40"
+                                    fill="none"
+                                    viewBox="0 0 40 40"
+                                    aria-hidden="true"
+                            >
+                                <g clip-path="url(#clip0_2450_17215)">
+                                    <path
+                                            stroke="#444"
+                                            d="M39.5 20c0 10.77-8.73 19.5-19.5 19.5S.5 30.77.5 20 9.23.5 20 .5 39.5 9.23 39.5 20Z"
+                                    ></path>
+                                    <path
+                                            fill="#444"
+                                            fill-rule="evenodd"
+                                            d="M16.911 13.16a.833.833 0 0 1 1.179 0l6.25 6.25a.833.833 0 0 1 0 1.18l-6.25 6.25a.833.833 0 1 1-1.179-1.18l5.66-5.66-5.66-5.66a.833.833 0 0 1 0-1.18Z"
+                                            clip-rule="evenodd"
+                                    ></path>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="imageBanner scroll-vertical" >
+                        <div th:each="image : *{companyImageList}">
+                            <img
+                                    th:src="${image.companyImagePath}"
+                                    height="441"
+                                    width="630"
+                                    loading="lazy"
+                            />
+                        </div>
+                    </div>
+                    <div class="bannerCount">
+                        <span>1</span>
+                        <!--  -->
+                        /
+                        <!--  -->
+                        <span th:text="*{imageCount}"></span>
+                    </div>
+                </div>
+                <div class="companyDetail">
+                            <pre class="companyDetailText" th:text="*{companyIntroduce}">
+                            </pre>
+                    <button
+                            aria-expanded="false"
+                            class="companyDetailButton"
+                    >
+                        <span class="buttonText">더 보기</span>
+                        <svg
+                                class="expandIcon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="none"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                        >
+                            <path
+                                    fill="#222"
+                                    fill-rule="evenodd"
+                                    d="M13.472 5.195c.26.26.26.683 0 .943l-5 5a.667.667 0 0 1-.943 0l-5-5a.667.667 0 1 1 .943-.943L8 9.724l4.529-4.529c.26-.26.682-.26.943 0Z"
+                                    clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                        <svg
+                                class="collapseIcon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                        >
+                            <path
+                                    fill="#000"
+                                    fill-rule="evenodd"
+                                    d="M3.793 16.207a1 1 0 0 1 0-1.414l7.5-7.5a1 1 0 0 1 1.414 0l7.5 7.5a1 1 0 0 1-1.414 1.414L12 9.414l-6.793 6.793a1 1 0 0 1-1.414 0Z"
+                                    clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </button>
+                    <div class="gradient companyDetailHide"></div>
+                </div>
+            </div>
+        </section>
+        <!-- // 메인 정보 끝 -->
+        <!-- 사이드 기업정보 시작 -->
+        <aside class="sidePositionInfo">
+            <div class="wrap">
+                <div class="celebration">
+                            <span>
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                >
+                                    <path
+                                            fill="#222"
+                                            d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"
+                                    ></path>
+                                    <path
+                                            fill="#fff"
+                                            fill-rule="evenodd"
+                                            d="M5.25 12a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5H6a.75.75 0 0 1-.75-.75Z"
+                                            clip-rule="evenodd"
+                                    ></path>
+                                    <path
+                                            fill="#fff"
+                                            fill-rule="evenodd"
+                                            d="M11.731 10.224c-.03.022-.066.061-.085.152l-.983 4.715c-.392 1.885-3.097 1.846-3.436-.049l-.966-5.41a.75.75 0 1 1 1.477-.264l.966 5.41c.016.091.052.132.081.154a.27.27 0 0 0 .162.052.27.27 0 0 0 .163-.047c.03-.022.066-.061.085-.152l.982-4.715c.395-1.895 3.121-1.84 3.44.07l.81 4.857c.014.09.049.13.078.154a.27.27 0 0 0 .16.055.27.27 0 0 0 .162-.044c.03-.021.068-.06.089-.148l1.354-5.688a.75.75 0 1 1 1.46.348l-1.355 5.687c-.442 1.857-3.115 1.765-3.428-.118l-.81-4.857c-.015-.092-.051-.133-.08-.155a.27.27 0 0 0-.162-.054.27.27 0 0 0-.164.047Z"
+                                            clip-rule="evenodd"
+                                    ></path>
+                                </svg>
+                                최종 합격하면
+                                <em>취업축하금 50만원</em>
+                            </span>
+                </div>
+                <div class="contents">
+                    <a href="" class="company">
+<!--                        <img-->
+<!--                                th:src="*{companyLogoPath}"-->
+<!--                                height="70"-->
+<!--                                width="70"-->
+<!--                        />-->
+                        <div class="name">
+                            <h2 th:text="*{companyName}"></h2>
+                            <a th:href="|/program/company-info/*{companyId}|">
+                                        <span
+                                        >기업정보 보기
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="12"
+                                                height="12"
+                                                fill="none"
+                                                viewBox="0 0 12 12"
+                                        >
+                                            <path
+                                                    fill="#222"
+                                                    fill-rule="evenodd"
+                                                    d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                                    clip-rule="evenodd"
+                                            ></path>
+                                        </svg>
+                                    </span>
+                            </a>
+
+                        </div>
+                    </a>
+                    <dl class="details">
+                        <div>
+                            <dt>업력</dt>
+                            <dd>
+                                <strong th:text="|*{duration}년차 (*{year}년 *{month}월 설립)|"></strong>
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>홈페이지</dt>
+                            <dd>
+                                <a class="companyUrl" th:href="*{companyUrl}" th:text="*{companyUrl}"></a>
+                            </dd>
+                        </div>
+                    </dl>
+                    <div class="sideButtonWrapper">
+                        <button type="button" class="applyButton">
+                            지원하기
+                        </button>
+                        <ul class="subButtons">
+                            <li class="subButtonList">
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                >
+                                    <path
+                                            fill="#222"
+                                            fill-rule="evenodd"
+                                            d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                            clip-rule="evenodd"
+                                    ></path>
+                                </svg>
+                                <span>스크랩</span>
+                            </li>
+                            <li class="subButtonList">
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                >
+                                    <path
+                                            fill="#222"
+                                            fill-rule="evenodd"
+                                            d="M17.75 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm-3.5 1.5a3.5 3.5 0 1 1 1.131 2.577L9.686 11.33a3.518 3.518 0 0 1 .045 1.032l5.5 3.207a3.5 3.5 0 1 1-.92 1.779l-5.358-3.125a3.5 3.5 0 1 1-.195-4.666l5.598-3.199a3.505 3.505 0 0 1-.106-.859Zm-8 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm10 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
+                                            clip-rule="evenodd"
+                                    ></path>
+                                </svg>
+                                <span>공유</span>
+                            </li>
+                            <li class="subButtonList">
+                                <a href="" id="openModalButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" height="24" width="24" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">
+<g>
+	<g>
+		<path d="M384,372.07v-128c0-70.579-57.421-128-128-128s-128,57.421-128,128v128c-14.14,0-25.6,11.46-25.6,25.6v25.6    c0,14.14,11.46,25.6,25.6,25.6h256c14.14,0,25.6-11.46,25.6-25.6v-25.6C409.6,383.531,398.14,372.07,384,372.07z M153.6,244.07    c0-56.559,45.85-102.4,102.4-102.4c56.55,0,102.4,45.841,102.4,102.4v128H153.6V244.07z M384,423.27H128v-25.6h256V423.27z"/>
+	</g>
+</g>
+                                        <g>
+	<g>
+		<path d="M129.348,117.419l-18.091-18.091C74.172,136.405,51.2,187.605,51.2,244.07c0,38.502,10.88,74.419,29.431,105.224    l21.922-13.15C86.315,309.188,76.8,277.76,76.8,244.07C76.8,194.662,96.896,149.862,129.348,117.419z"/>
+	</g>
+</g>
+                                        <g>
+	<g>
+		<path d="M400.751,99.319L382.66,117.41c32.444,32.452,52.54,77.252,52.54,126.66c0,33.69-9.515,65.118-25.745,92.075l21.922,13.15    C449.92,318.49,460.8,282.564,460.8,244.07C460.8,187.605,437.828,136.405,400.751,99.319z"/>
+	</g>
+</g>
+                                        <g>
+	<g>
+		<path d="M436.932,63.13l-18.099,18.099c41.728,41.719,67.567,99.319,67.567,162.842c0,43.315-12.237,83.729-33.109,118.374    l21.922,13.158C498.406,337.101,512,292.198,512,244.07C512,173.483,483.294,109.483,436.932,63.13z"/>
+	</g>
+</g>
+                                        <g>
+	<g>
+		<path d="M93.158,81.229L75.068,63.13C28.706,109.483,0,173.483,0,244.07c0,48.128,13.594,93.03,36.779,131.533l21.922-13.158    C37.837,327.791,25.6,287.377,25.6,244.07C25.6,180.548,51.439,122.948,93.158,81.229z"/>
+	</g>
+</g>
+</svg>
+                                <span>공고 신고하기</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="banner"></div>
+            </div>
+        </aside>
+        <!-- // 사이드 기업정보 끝 -->
+    </div>
+    <!-- 유사 포지션 모음 시작 -->
+    <div class="positionRecommend">
+        <div class="positionIng">
+            <h2 class="tit">지금 보는 포지션과 유사해요</h2>
+            <div class="progressPositionWrap">
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/jnyoon_106/20251014101040302_567_378.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-4</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>아파트아이</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                Java 백엔드 개발자
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Spring</li>
+                                <li>· JavaScript</li>
+                                <li>· jQuery</li>
+                                <li>· Java</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 금천구</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/dabin_3358/20243708143740292_739_503.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-2</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>디어유</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                Payment 개발 담당자(JAVA 기반)
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Java</li>
+                                <li>· Spring Boot</li>
+                                <li>· AWS</li>
+                                <li>· Python</li>
+                                <li>· MySQL</li>
+                                <li>· NoSql</li>
+                                <li>· Redis</li>
+                                <li>· Elasticsearch</li>
+                                <li>· Cassandra</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 강남구</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/172418/20232710122756975_1000_731.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-3</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>마카롱팩토리</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                안드로이드 개발 (5년 이상)
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Android OS</li>
+                                <li>· Java</li>
+                                <li>· Kotlin</li>
+                                <li>· Realm</li>
+                                <li>· Flutter</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>경기 성남시</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/dabin_3358/20255820135810672_1500_1000.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-4</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>엠로</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                Java개발자 (Cloud Native)
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>AWS</li>
+                                <li>· AZURE</li>
+                                <li>· Java</li>
+                                <li>· JavaScript</li>
+                                <li>· Oracle</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 영등포구</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/support_5470/20214418134424796_1652_1232.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-5</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>퍼즐원스튜디오</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                Game Programmer 경력 채용
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Unity</li>
+                                <li>· iOS</li>
+                                <li>· Android OS</li>
+                                <li>· Google Drive</li>
+                                <li>· Slack</li>
+                                <li>· Jenkins</li>
+                                <li>· Git</li>
+                                <li>· C#</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>경기 성남시</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/jnyoon_106/20252915102949724_567_378.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-9</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>레플리</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                백엔드 엔지니어(3년 이상)
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Kotlin</li>
+                                <li>· Spring</li>
+                                <li>· Golang</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 종로구</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/170805/20232004102035347_3000_2000.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-10</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>헤렌</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                [공비서] 자바/코틀린 백엔드 개발자
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Java</li>
+                                <li>· Spring Boot</li>
+                                <li>· Mybatis</li>
+                                <li>· MariaDB</li>
+                                <li>· MySQL</li>
+                                <li>· DataGrip</li>
+                                <li>· GitHub</li>
+                                <li>· Slack</li>
+                                <li>· Notion</li>
+                                <li>· Jenkins</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 성동구</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/jnyoon_106/20255617145611345_567_378.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft">D-7</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>제로더</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                웹 개발자 (JAVA)
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Java</li>
+                                <li>· Spring Boot</li>
+                                <li>· JavaScript</li>
+                                <li>· CSS 3</li>
+                                <li>· Linux</li>
+                                <li>· MySQL</li>
+                                <li>· Oracle</li>
+                                <li>· Git</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 성북구</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // 유사 포지션 모음 끝 -->
+    <!-- 버튼 누르면 뜨는 입사지원창 시작 -->
+    <div class="applyNewWindow">
+        <header class="applyTitle">
+            <h1>입사지원</h1>
+            <button class="applyCloseBtn">
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                >
+                    <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="m12.072 13.485 7.07 7.071 1.415-1.414-7.071-7.071 7.07-7.07-1.414-1.415-7.07 7.07L5 3.587 3.586 5l7.071 7.071-7.071 7.071L5 20.557l7.072-7.072Z"
+                            clip-rule="evenodd"
+                    ></path>
+                </svg>
+            </button>
+        </header>
+        <form novalidate method="POST" action="/program/detail/submit">
+            <article class="applyForm">
+                <main class="formMain horizonalScroll">
+                    <!-- 이력서에 정보입력이 안 되면 뜨는 창 시작 -->
+                    <!-- <div class="resumeNullMessage">
+                        <a href="" target="_blank" class="resumeReLink">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#F04452" d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12Z"></path><path fill="#fff" fill-rule="evenodd" d="M13 6.5h-2v7h2v-7Zm0 9h-2v2h2v-2Z" clip-rule="evenodd"></path></svg>
+                            <h1 class="redWindowText">
+                                <span>최종학력</span>을 입력해주세요.
+
+                            </h1>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12"><path fill="#c4c4c4" fill-rule="evenodd" d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z" clip-rule="evenodd"></path></svg>
+                        </a>
+                    </div> -->
+                    <!-- // 이력서에 정보입력이 안 되면 뜨는 창 끝 -->
+                    <div class="formWrapper" >
+                        <section class="formElement first">
+                            <h1 th:text="*{programName}"></h1>
+                            <p th:text="*{companyName}"></p>
+                        </section>
+                        <section class="formElement">
+                            <div class="accountTitle">
+                                <h2>통합 계정정보</h2>
+                            </div>
+                            <ul class="accountInfo" th:object="${session.memberDTO}">
+                                <li>
+                                    <span class="title">이름</span>
+                                    <span class="accountContent" th:text="*{memberName}"></span>
+                                    <a href="">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="12"
+                                                height="12"
+                                                fill="none"
+                                                viewBox="0 0 12 12"
+                                        >
+                                            <path
+                                                    fill="#c4c4c4"
+                                                    fill-rule="evenodd"
+                                                    d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                                    clip-rule="evenodd"
+                                            ></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <span class="title">이메일</span>
+                                    <span class="accountContent" th:text="*{memberEmail}">
+                                                ></span
+                                    >
+                                    <a href="">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="12"
+                                                height="12"
+                                                fill="none"
+                                                viewBox="0 0 12 12"
+                                        >
+                                            <path
+                                                    fill="#c4c4c4"
+                                                    fill-rule="evenodd"
+                                                    d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                                    clip-rule="evenodd"
+                                            ></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <span class="title">연락처</span>
+                                    <span class="accountContent"
+                                          th:text="*{memberPhone}"  ></span
+                                    >
+                                    <a href="">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="12"
+                                                height="12"
+                                                fill="none"
+                                                viewBox="0 0 12 12"
+                                        >
+                                            <path
+                                                    fill="#c4c4c4"
+                                                    fill-rule="evenodd"
+                                                    d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                                    clip-rule="evenodd"
+                                            ></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <span class="title">출생년도</span>
+                                    <span class="accountContent"
+                                          th:text="|*{memberBirth}년|" ></span
+                                    >
+                                    <a href="">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="12"
+                                                height="12"
+                                                fill="none"
+                                                viewBox="0 0 12 12"
+                                        >
+                                            <path
+                                                    fill="#c4c4c4"
+                                                    fill-rule="evenodd"
+                                                    d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                                    clip-rule="evenodd"
+                                            ></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="formElement" th:object="${session.memberDTO}" >
+                            <div class="resumeTitle">
+                                <h2>지원 이력서<em class="mustRedDot">
+                                    <span class="blind">필수</span>
+                                </em>
+                                </h2>
+                                <span>이력서 총
+                                            <em>1</em>개
+                                        </span>
+                            </div>
+                            <ul class="resumeInfoWrapper" >
+                                <!-- 지원 이력서 1번 시작 -->
+                                <li class="resumeContent" th:each="resume : *{resumeList}">
+                                    <div>
+                                        <input type="radio" name="selectResumeid" th:class="${resume.resumeRequired}" th:value="${resume.id}">
+                                        <div class="resumeInfo">
+                                            <h3 th:text="${resume.resumeTitle}"></h3>
+                                            <!--                                                    <ul>-->
+                                            <!--                                                        <li class="resumeSkill"></li>-->
+                                            <!--                                                        <li class="resumeSkill">프로젝트</li>-->
+                                            <!--                                                    </ul>-->
+                                            <p>
+                                                <span th:text="${resume.createdDate}"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="resumeFixBtn">
+                                        <a href="" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32"><path fill="#fff" fill-rule="evenodd" d="M22.221 4.667a2.667 2.667 0 0 0-3.77 0l-11.602 11.6c-.5.501-.781 1.18-.781 1.887v3.18A2.667 2.667 0 0 0 8.734 24h3.18c.707 0 1.386-.281 1.886-.781L25.4 11.617a2.667 2.667 0 0 0 0-3.77l-3.18-3.18ZM8.734 18.153l11.602-11.6 3.18 3.179-11.602 11.601h-3.18v-3.18ZM5.334 26a1.333 1.333 0 1 0 0 2.666h21.333a1.333 1.333 0 0 0 0-2.666H5.333Z" clip-rule="evenodd"></path></svg>
+                                        </a>
+                                    </div>
+                                </li>
+                                <!-- // 지원 이력서 1번 끝 -->
+                                <!-- 지원 이력서 2번 시작 -->
+
+                                <!-- // 지원 이력서 2번 끝 -->
+                            </ul>
+                        </section>
+
+                    </div>
+                </main>
+                <footer class="formSubmitBtn">
+                    <div class="formButton" >
+                        <button color="green" class="submitButton" disabled>지원하기</button>
+                        <input type="hidden" id="memberIdValue" th:value="${session.member.id}">
+                        <input type="hidden" id="programIdValue" th:value="${programInfo.id}">
+                    </div>
+                </footer>
+            </article>
+        </form>
+    </div>
+    <!-- // 버튼 누르면 뜨는 입사지원창 끝 -->
+</main>
+<!-- // 메인 끝 -->
+<!--신고하기 누르면 뜨는 모달창-->
+<div class="report-modal" style="display: none">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+        <!-- 모달 헤더 -->
+        <div class="modal-header">
+            <h3>공고 신고하기</h3>
+            <button type="button" class="close-btn">
+                <img
+                        src="/images/admin/cross.png"
+                        alt="닫기"
+                />
+            </button>
+        </div>
+
+        <!-- 모달 본문 -->
+        <div class="modal-body">
+            <!-- 신고 대상 입력 -->
+            <form th:action="@{/reports/program-create}" method="post" id="">
+                <div class="report-info">
+                    <h4>신고 대상</h4>
+                    <div class="report-subject" id="report-target">
+                        <span
+                                style="width: 100%; height: 100%"
+                                id="programName"
+                                th:text="${programInfo.programName}"
+                        ></span>
+                        <input type="hidden" id="programId" name="programId" th:value="${id}">
+                    </div>
+
+                    <!-- 신고 유형 선택 -->
+                    <div class="report-selection">
+                        <h4>신고 유형</h4>
+                        <select class="report-type" name="reportType" id="reportType">
+                            <option
+                                    value="권리 침해"
+                                    selected
+                            >
+                                권리 침해
+                            </option>
+                            <option value="허위정보">
+                                허위정보
+                            </option>
+                            <option value="스팸 / 도배"> 스팸 &#47; 도배</option>
+                            <option value="부적절한 내용">
+                                부적절한 내용
+                            </option>
+                            <option value="기타">기타</option>
+                        </select>
+                    </div>
+
+                    <!-- 신고 상세정보 입력 -->
+                    <div class="report-detail">
+                        <h4>신고 상세 내용</h4>
+                        <textarea
+                                placeholder="신고 내역에 대한 상세정보를 입력해주세요."
+                                id="reportDetail"
+                                style="
+                            width: 100%;
+                            min-height: 100px;
+                            padding: 12px;
+                            margin: 8px 0;
+                            border: 1px solid #e9ecef;
+                            border-radius: 4px;
+                            resize: vertical;"
+                                name="reportDetail"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- 모달 푸터 -->
+                <div class="modal-footer">
+                    <button type="button" class="cancel-btn">취소</button>
+                    <button type="button" class="save-btn">보내기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/js/main/program-detail.js"></script>
+<script src="/js/member/mypage-all.js"></script>
+<script src="/js/admin/reportService.js"></script>
+<script src="/js/main/report-write-event.js"></script>
+<script th:inline="javascript">
+    const memberData = /*[[${session.member}]]*/ null;
+</script>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.temp.mapper.ResumeMapper">
+    <select id="selectByMemberId" resultType="memberResumeDTO">
+        SELECT ID, MEMBER_ID, RESUME_TITLE, RESUME_INTRODUCE, TO_CHAR(CREATED_DATE,'YYYY-MM-DD') CREATED_DATE, RESUME_PROFILE_PHOTO
+        FROM TBL_RESUME
+        WHERE MEMBER_ID = #{memberId}
+    </select>
+    <!--    특정 유저 이력서들 조회-->
+    <select id="selectAllMemberResume" resultType="resumeDTO">
+        SELECT RESUME_TITLE, RESUME_INTRODUCE, MEMBER_NAME, TO_CHAR(R.CREATED_DATE, 'YYYY.MM.DD') AS CREATED_DATE, MEMBER_ID, R.ID, RESUME_PROFILE_PHOTO, MEMBER_EMAIL, MEMBER_PHONE, R.UPDATED_DATE
+        FROM TBL_MEMBER M join TBL_RESUME R
+        ON M.ID = R.MEMBER_ID
+        WHERE R.MEMBER_ID = #{memberId}
+    </select>
+    <!--    이력서 수정-->
+    <update id="resumeUpdate">
+        UPDATE TBL_RESUME
+        SET RESUME_INTRODUCE=#{resumeTitle}, RESUME_PROFILE_PHOTO=#{resumeProfilePhoto}, RESUME_INTRODUCE=#{resumeIntroduce}, UPDATED_DATE=SYSDATE
+    </update>
+<!--    이력서 추가-->
+    <insert id="insertResume">
+        INSERT INTO TBL_RESUME (ID, RESUME_TITLE, MEMBER_ID)
+        VALUES (SEQ_RESUME.NEXTVAL, #{memberName}, #{id})
+    </insert>
+<!--    이력서 삭제-->
+    <delete id="deleteResume">
+        DELETE FROM TBL_RESUME
+        WHERE ID = #{id}
+    </delete>
+</mapper>

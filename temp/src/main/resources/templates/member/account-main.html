@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 포지션 찾아보기 버튼 = 공고 목록 -->
+<!-- 이력서 완성하러가기 버튼 = 지원서 홈 버튼 -->
+
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="/css/member/mypage-main1.css" data-precedence="next" />
+    <link rel="stylesheet" href="/css/member/mypage-main2.css" />
+    <link rel="stylesheet" href="/css/member/mypage-main3.css" />
+    <link rel="stylesheet" href="/css/member/header.css">
+    <title>템프 | 마이페이지</title>
+    <link rel="icon" href="/images/member/favicon.ico" />
+
+    </style>
+    <style>
+        @font-face {
+            font-family: Jumpit;
+            src: url("/fonts/member/ff840cfebfb63b0c-s.p.woff2");
+        }
+
+        * {
+            font-family: Jumpit;
+        }
+    </style>
+</head>
+
+<body class="__className_f53396">
+<header th:replace="~{main/header.html :: .header-sc}"></header>
+    <main class="main-sc0">
+        <div>
+            <div class="main-wrapper0">
+                <div class="main-content1">
+                    <div>
+                        <h2><a href="/mypage/account-main">마이템프</a>
+                        </h2>
+                        <div class="mypagemenu-wrapper">
+                            <ul class="mypagemenu1">
+                                <li class="mypagemenu2">
+                                    <a target="_self" href="/member/account-applied">입사지원
+                                        현황</a>
+                                </li>
+                                <li class="mypagemenu2">
+                                    <a target="_self" href="/member/account-payment">결제
+                                        관리</a>
+                                </li>
+                                <li class="mypagemenu2-1">
+                                    <a target="_self" href="/mypage/account-info">계정
+                                        정보 설정</a>
+                                </li>
+                                <li class="mypagemenu2">
+                                    <a target="_self" href="/member/account-withdrawal">계정
+                                        탈퇴</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content2" >
+                    <h1>마이템프
+                    </h1>
+                    <ul class="topbox0">
+                        <li class="topbox-content1">
+                            <a href="/member/account-applied">
+                                <dl>
+                                    <dt>지원완료</dt>
+                                    <dd>0</dd>
+                                </dl>
+                            </a>
+                        </li>
+
+                        <li class="topbox-content1">
+                            <a href="/member/account-applied">
+                                <dl>
+                                    <dt>최종합격</dt>
+                                    <dd>0</dd>
+                                </dl>
+                            </a>
+                        </li>
+                        <li class="topbox-content1">
+                            <a href="/member/account-applied">
+                                <dl>
+                                    <dt>불합격</dt>
+                                    <dd>0</dd>
+                                </dl>
+                            </a>
+                        </li>
+                    </ul>
+                    <a rel="noreferrer" target="_blank" href="/resumes">
+                        <div class="main-content4">
+                            <span><i></i></span><span></span><span><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                    height="12" fill="none" viewBox="0 0 12 12">
+                                    <path fill="#222" fill-rule="evenodd"
+                                        d="M4.146 1.896a.5.5 0 0 1 .708 0l3.75 3.75a.5.5 0 0 1 0 .708l-3.75 3.75a.5.5 0 0 1-.708-.708L7.543 6 4.146 2.604a.5.5 0 0 1 0-.708Z"
+                                        clip-rule="evenodd">
+                                    </path>
+                                </svg></span>
+                        </div>
+                    </a><!--$--><!--/$-->
+                    <!-- 여기는 스크랩한 목록이 있을 경우에 -->
+                    <div class="mainpage-scraplist">
+                        <h1>잊지않으셨죠? 스크랩 리스트</h1><a href="/scraps">전체보기</a>
+                    </div>
+                    <div class="mainpage-scrapcontent" >
+                        <div class="main-content5-bottom-box" th:each="scrap : ${scrapList}">
+                            <a target="_blank"
+                                title="AI Research Scientist (Computer Vision and Bioinformatics)_병역특례/전문연구요원 우대 (2~4년)"
+                                href="/position/42110">
+                                <div class="img-filter">
+                                </div>
+                                <div class="img-box">
+                                    <img alt="아론티어" class="img"
+                                        src="https://cdn.jumpit.co.kr/lg/images/jnyoon_106/20253515103518656_567_378.webp">
+                                    <div class="d-date" >
+                                        <span class="d-date-text" th:text="|D-*{scrap.dDay}|"></span>
+                                    </div>
+                                    <div class="counts">
+                                        <div class="position-view-count">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                                <g fill="none" fill-rule="evenodd">
+                                                    <path d="M0 0h16v16H0z">
+                                                    </path>
+                                                    <g stroke="#FFF" stroke-linecap="round">
+                                                        <path
+                                                            d="M8 10c.86 0 1.556-.672 1.556-1.5S8.859 7 8 7c-.86 0-1.556.672-1.556 1.5S7.141 10 8 10z">
+                                                        </path>
+                                                        <path
+                                                            d="M15 8.5c-1.469 2.243-4.108 4.5-7 4.5-2.892 0-5.531-2.257-7-4.5C2.788 6.369 4.882 4 8 4s5.212 2.369 7 4.5z">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                            </svg><span th:text="${scrap.programReadCount}"></span>
+                                        </div><button aria-pressed="true" type="button" class="scrap-button"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                                viewBox="0 0 24 24">
+                                                <path fill="#00DD6D" fill-rule="evenodd"
+                                                    d="M6.403 20.825a1 1 0 0 1-1.653-.757V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.068a1 1 0 0 1-1.653.757L12 16l-5.597 4.825Z"
+                                                    clip-rule="evenodd">
+                                                </path>
+                                            </svg></button>
+                                    </div>
+                                </div>
+                                <div class="content-text">
+                                    <div class="content-text1">
+                                        <span th:text="*{scrap.companyName}"></span>
+                                    </div>
+                                    <h2 class="position_card_info_title" th:text="*{scrap.programName}">
+                                        </h2>
+                                    <ul class="content-text2">
+                                        <li>AI/인공지능</li>
+                                        <li>· PyTorch
+                                        </li>
+                                        <li>· Linux</li>
+                                        <li>· GitHub
+                                        </li>
+                                        <li>· Python
+                                        </li>
+                                    </ul>
+                                    <ul class="content-text3">
+                                        <li>경력 0년</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                        </div>
+
+                    <!-- 화면에 나타날 영역 -->
+                    <!-- 여기부터는 스크랩 리스트가 비어있을 때 -->
+
+                    <!-- 화면에 나타날 영역 -->
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="modal"></div>
+
+</body>
+<script src="/js/member/mypage-all.js"></script>
+<script th:inline="javascript">
+    const memberData = /*[[${session.member}]]*/ null;
+</script>
+</html>

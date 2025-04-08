@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>관리자 페이지</title>
+        <link rel="stylesheet" href="/css/admin/global.css" />
+        <link rel="stylesheet" href="/css/admin/navi.css" />
+        <link rel="stylesheet" href="/css/admin/sidebar.css" />
+        <link rel="stylesheet" href="/css/admin/main.css" />
+        <link rel="stylesheet" href="/css/admin/media.css" />
+        <link rel="stylesheet" href="/css/admin/report.css" />
+        <link rel="stylesheet" href="/css/admin/report_modal.css">
+        <link rel="stylesheet" href="/css/admin/notice.css">
+        <link rel="stylesheet" href="/css/admin/notice_modal.css" />
+        <link rel="stylesheet" href="/css/admin/announce.css" />
+        <link
+            rel="stylesheet"
+            href="/css/admin/announce_modal.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/normal_member.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/normal_member_modal.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/company_member.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/company_member_modal.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/company_certificate_modal.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/normal_inquiry.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/normal_inquiry_modal.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/company_inquiry.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/admin/company_inquiry_modal.css"
+        />
+    </head>
+    <body class="admin-body">
+        <div id="root">
+            <div id="admin-layout" class="layout-container">
+                <!-- 상단 네비게이션 바 -->
+                <header class="gnb-container" id="admin-gnb">
+                    <div class="gnb-content">
+                        <div class="logo-wrapper">
+                            <button
+                                class="logo-btn"
+                                type="button"
+                                aria-label="로고 버튼"
+                            ></button>
+                            <div class="logo-type"></div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- 메인 콘텐츠 영역 -->
+                <div class="main-content">
+                    <!-- 사이드바 네비게이션 -->
+                    <nav
+                        id="sidebar-nav"
+                        class="sidebar-container sidebar-expanded sidebar-scroll"
+                    >
+                        <div class="sidebar-content">
+                            <div class="nav-menu">
+                                <div
+                                    id="nav-links"
+                                    class="nav-links-menu"
+                                    style="overflow: auto"
+                                >
+                                    <!-- 공고관리 섹션 -->
+                                    <div class="menu-section">
+                                        <a class="menu-item menu-has-submenu">
+                                            <span class="menu-label">
+                                                <img
+                                                    src="/images/admin/공고.svg"
+                                                    alt="공고관리"
+                                                    class="menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                />
+                                                공고관리
+                                                <img
+                                                    src="/images/admin/arrow.svg"
+                                                    class="arrow-icon menu-arrow"
+                                                    alt="메뉴 화살표"
+                                                />
+                                            </span>
+                                        </a>
+                                        <div class="submenu-container">
+                                            <a
+                                                class="submenu-item announce-link"
+                                                href="/admin/home/programs"
+                                                data-category="program"
+                                                >공고목록</a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- 회원관리 섹션 -->
+                                    <div class="menu-section">
+                                        <a class="menu-item menu-has-submenu">
+                                            <span class="menu-label">
+                                                <img
+                                                    src="/images/admin/회원1.png"
+                                                    alt="회원관리"
+                                                    class="menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                />
+                                                회원관리
+                                                <img
+                                                    src="/images/admin/arrow.svg"
+                                                    class="arrow-icon menu-arrow"
+                                                    alt="메뉴 화살표"
+                                                />
+                                            </span>
+                                        </a>
+                                        <div class="submenu-container">
+                                            <a
+                                                class="submenu-item normal-member-link"
+                                                href="/admin/home/members"
+                                                data-category="member"
+                                                >일반회원</a
+                                            >
+                                            <a
+                                                class="submenu-item company-member-link"
+                                                href="/admin/home/companymembers"
+                                                data-category="companymember"
+                                                >기업회원</a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- 문의관리 섹션 -->
+                                    <div class="menu-section">
+                                        <a class="menu-item menu-has-submenu">
+                                            <span class="menu-label">
+                                                <img
+                                                    src="/images/admin/문의.png"
+                                                    alt="문의관리"
+                                                    class="menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                />
+                                                문의관리
+                                                <img
+                                                    src="/images/admin/arrow.svg"
+                                                    class="arrow-icon menu-arrow"
+                                                    alt="메뉴 화살표"
+                                                />
+                                            </span>
+                                        </a>
+                                        <div class="submenu-container">
+                                            <a
+                                                class="submenu-item personal-inquiry-link"
+                                                href="/admin/home/member-inquiries"
+                                                data-category="memberinquiry"
+                                                >개인문의</a
+                                            >
+                                            <a
+                                                class="submenu-item company-inquiry-link"
+                                                href="/admin/home/company-inquiries"
+                                                data-category="companyinquiry"
+                                                >기업문의</a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- 신고관리 섹션 -->
+                                    <div class="menu-section">
+                                        <a class="menu-item menu-has-submenu">
+                                            <span class="menu-label">
+                                                <img
+                                                    src="/images/admin/신고.png"
+                                                    alt="신고관리"
+                                                    class="menu-icon"
+                                                    width="16"
+                                                    height="16"
+                                                />
+                                                신고관리
+                                                <img
+                                                    src="/images/admin/arrow.svg"
+                                                    class="arrow-icon menu-arrow"
+                                                    alt="메뉴 화살표"
+                                                />
+                                            </span>
+                                        </a>
+                                        <div class="submenu-container">
+                                            <a
+                                                class="submenu-item company-report-link"
+                                                href="/admin/home/reports/company-list"
+                                                data-category="company-report"
+                                                >기업 신고목록</a
+                                            >
+                                            <a
+                                                    class="submenu-item program-report-link"
+                                                    href="/admin/home/reports/program-list"
+                                                    data-category="program-report"
+                                            >공고 신고목록</a
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="menu-section">
+                                        <a class="menu-item menu-has-submenu">
+                                            <span class="menu-label">
+                                                <img
+                                                        src="/images/admin/신고.png"
+                                                        alt="공지관리"
+                                                        class="menu-icon"
+                                                        width="16"
+                                                        height="16"
+                                                />
+                                                공지관리
+                                                <img
+                                                        src="/images/admin/arrow.svg"
+                                                        class="arrow-icon menu-arrow"
+                                                        alt="메뉴 화살표"
+                                                />
+                                            </span>
+                                        </a>
+                                        <div class="submenu-container">
+                                            <a
+                                                    class="submenu-item notice-link"
+                                                    href="/admin/home/notices"
+                                                    data-category="notice"
+                                            >공지목록</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                    </div>
+                        </div>
+                    </nav>
+
+                    <!-- 메인 컨텐츠 영역 -->
+                    <div id="main-contents" class="contents-container">
+                        <!-- 홈 컨텐츠 -->
+                        <main class="project-container">
+                            <div id="project-content" class="project-box">
+                                <section>
+                                    <div class="head-banner"></div>
+                                </section>
+                                <section class="project-presentation">
+                                    <h2 class="presentation-title">HOME</h2>
+                                    <div class="presentation-desc">
+                                        각 관리 메뉴에 간편하고 빠르게 접근할 수
+                                        있습니다.
+                                    </div>
+                                    <div class="presentation-content">
+                                        <div class="project-wrapper">
+                                            <div class="project-layout">
+                                                <div class="project-contents">
+                                                    <div
+                                                        class="menu-list-container"
+                                                    >
+                                                        <ul>
+                                                            <li
+                                                                class="menu-card menu-announce"
+                                                            >
+                                                                <div
+                                                                    class="menu-content"
+                                                                >
+                                                                    <div
+                                                                        class="menu-name"
+                                                                    >
+                                                                        공고목록
+                                                                    </div>
+                                                                    <em
+                                                                        class="menu-status menu-wadiz-color"
+                                                                        >공고관리</em
+                                                                    >
+                                                                    <a
+                                                                        class="menu-btn announce-link"
+                                                                        href="/admin/home/programs"
+                                                                    >
+                                                                        <span
+                                                                            >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                            <li
+                                                                class="menu-card menu-member"
+                                                            >
+                                                                <div
+                                                                    class="menu-content"
+                                                                >
+                                                                    <div
+                                                                        class="menu-name"
+                                                                    >
+                                                                        일반회원
+                                                                        관리
+                                                                    </div>
+                                                                    <em
+                                                                        class="menu-status menu-wadiz-color"
+                                                                        >회원관리</em
+                                                                    >
+                                                                    <a
+                                                                        class="menu-btn normal-member-link"
+                                                                        href="/admin/home/members"
+                                                                    >
+                                                                        <span
+                                                                            >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                            <li
+                                                                class="menu-card menu-member"
+                                                            >
+                                                                <div
+                                                                    class="menu-content"
+                                                                >
+                                                                    <div
+                                                                        class="menu-name"
+                                                                    >
+                                                                        기업회원
+                                                                        관리
+                                                                    </div>
+                                                                    <em
+                                                                        class="menu-status menu-wadiz-color"
+                                                                        >회원관리</em
+                                                                    >
+                                                                    <a
+                                                                        class="menu-btn company-member-link"
+                                                                        href="/admin/home/company-members"
+                                                                    >
+                                                                        <span
+                                                                            >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                            <li
+                                                                class="menu-card menu-inquiry"
+                                                            >
+                                                                <div
+                                                                    class="menu-content"
+                                                                >
+                                                                    <div
+                                                                        class="menu-name"
+                                                                    >
+                                                                        개인문의
+                                                                        목록 /
+                                                                        답변
+                                                                    </div>
+                                                                    <em
+                                                                        class="menu-status menu-wadiz-color"
+                                                                        >문의관리</em
+                                                                    >
+                                                                    <a
+                                                                        class="menu-btn personal-inquiry-link"
+                                                                        href="/admin/home/member-inquiries"
+                                                                    >
+                                                                        <span
+                                                                            >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                            <li
+                                                                class="menu-card menu-inquiry"
+                                                            >
+                                                                <div
+                                                                    class="menu-content"
+                                                                >
+                                                                    <div
+                                                                        class="menu-name"
+                                                                    >
+                                                                        기업문의
+                                                                        목록 /
+                                                                        답변
+                                                                    </div>
+                                                                    <em
+                                                                        class="menu-status menu-wadiz-color"
+                                                                        >문의관리</em
+                                                                    >
+                                                                    <a
+                                                                        class="menu-btn company-inquiry-link"
+                                                                        href="/admin/home/company-inquiries"
+                                                                    >
+                                                                        <span
+                                                                            >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                            <li
+                                                                class="menu-card menu-report"
+                                                            >
+                                                                <div
+                                                                    class="menu-content"
+                                                                >
+                                                                    <div
+                                                                        class="menu-name"
+                                                                    >
+                                                                        기업 신고목록
+                                                                    </div>
+                                                                    <em
+                                                                        class="menu-status menu-wadiz-color"
+                                                                        >신고관리</em
+                                                                    >
+                                                                    <a
+                                                                        class="menu-btn company-report-link"
+                                                                        href="/admin/home/reports/company-list"
+                                                                    >
+                                                                        <span
+                                                                            >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                            <li
+                                                                    class="menu-card menu-report"
+                                                            >
+                                                                <div
+                                                                        class="menu-content"
+                                                                >
+                                                                    <div
+                                                                            class="menu-name"
+                                                                    >
+                                                                        공고 신고목록
+                                                                    </div>
+                                                                    <em
+                                                                            class="menu-status menu-wadiz-color"
+                                                                    >신고관리</em
+                                                                    >
+                                                                    <a
+                                                                            class="menu-btn program-report-link"
+                                                                            href="/admin/home/reports/program-list"
+                                                                    >
+                                                                        <span
+                                                                        >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                            <li
+                                                                    class="menu-card menu-notice"
+                                                            >
+                                                                <div
+                                                                        class="menu-content"
+                                                                >
+                                                                    <div
+                                                                            class="menu-name"
+                                                                    >
+                                                                        공지목록
+                                                                    </div>
+                                                                    <em
+                                                                            class="menu-status menu-wadiz-color"
+                                                                    >공지관리</em
+                                                                    >
+                                                                    <a
+                                                                            class="menu-btn notice-link"
+                                                                            href="/admin/home/notices"
+                                                                    >
+                                                                        <span
+                                                                        >바로가기</span
+                                                                        >
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </main>
+
+                        <!-- 공고관리 컨텐츠 -->
+                        <div class="announce-management" id="program" style="display: block">
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                class="announce-search-filter-container announce-filter"
+                            >
+                                <div class="search-box announce-search">
+                                    <input
+                                        type="text"
+                                        placeholder="검색어를 입력하세요"
+                                        class="search-input announce-search-input"
+                                        name ="keyword"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="search-btn announce-search-btn"
+                                    >
+                                        검색
+                                    </button>
+                                </div>
+                                <div class="filter-box announce-filter-box">
+                                    <select
+                                        class="status-filter announce-status-filter"
+                                    >
+                                        <option value="all">전체</option>
+                                        <option value="심사중">심사중</option>
+                                        <option value="보류">보류</option>
+                                        <option value="승인">승인</option>
+                                        <option value="반려">반려</option>
+                                    </select>
+                                    <select
+                                        class="date-filter announce-date-filter"
+                                    >
+                                        <option value="1">전체</option>
+                                        <option value="7">최근 1주일</option>
+                                        <option value="30">
+                                            최근 1개월
+                                        </option>
+                                        <option value="90">
+                                            최근 3개월
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 공고 목록 테이블 -->
+                            <div class="announce-table-container">
+                                <table class="announce-table">
+                                    <thead>
+                                        <tr>
+                                            <th>공고번호</th>
+                                            <th>기업명</th>
+                                            <th>공고제목</th>
+                                            <th>등록일</th>
+                                            <th>마감일</th>
+                                            <th>처리상태</th>
+                                            <th>관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="programList">
+<!--                                    공고 목록 들어가야할 공간-->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination announce-pagination">
+
+                            </div>
+                        </div>
+
+                        <!-- 일반회원 관리 컨텐츠 영역 -->
+                        <div
+                            class="normal-member-management"
+                            style="display: none"
+                        >
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                class="normal-member-search-filter-container member-filter"
+                            >
+                                <div class="search-box member-search">
+                                    <!-- 검색 입력창과 버튼 -->
+                                    <input
+                                        type="text"
+                                        placeholder="검색어를 입력하세요"
+                                        class="search-input member-search-input"
+                                        name="memberKeyword"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="search-btn member-search-btn"
+                                    >
+                                        검색
+                                    </button>
+                                </div>
+                                <div class="filter-box member-filter-box">
+                                    <!-- 회원상태 필터 -->
+                                    <select
+                                        class="status-filter member-status-filter"
+                                    >
+                                        <option value="all">전체</option>
+                                        <option value="활성">활성</option>
+                                        <option value="휴면">휴면</option>
+                                        <option value="정지">정지</option>
+                                        <option value="탈퇴">탈퇴</option>
+                                    </select>
+                                    <!-- 가입기간 필터 -->
+                                    <select
+                                        class="date-filter member-date-filter"
+                                    >
+                                        <option value="1">전체</option>
+                                        <option value="7">최근 1주일</option>
+                                        <option value="30">
+                                            최근 1개월
+                                        </option>
+                                        <option value="90">
+                                            최근 3개월
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 회원 목록 테이블 -->
+                            <div class="normal-member-table-container">
+                                <table class="normal-member-table">
+                                    <thead>
+                                        <tr>
+                                            <th>회원번호</th>
+                                            <th>이름</th>
+                                            <th>이메일</th>
+                                            <th>가입일</th>
+                                            <th>최근접속일</th>
+                                            <th>회원상태</th>
+                                            <th>회원관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 샘플 데이터 -->
+
+                                        <!-- 추가 샘플 데이터들... -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination normal-member-pagination">
+                                <button type="button" class="page-btn prev">
+                                    이전
+                                </button>
+                                <div class="page-numbers">
+                                    <button
+                                        type="button"
+                                        class="page-btn active"
+                                    >
+                                        1
+                                    </button>
+                                    <button type="button" class="page-btn">
+                                        2
+                                    </button>
+                                    <button type="button" class="page-btn">
+                                        3
+                                    </button>
+                                </div>
+                                <button type="button" class="page-btn next">
+                                    다음
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 기업회원 관리 컨텐츠 영역 -->
+                        <div
+                            class="company-member-management"
+                            style="display: none"
+                        >
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                class="company-member-search-filter-container member-filter"
+                            >
+                                <div class="search-box company-member-search">
+                                    <!-- 검색 입력창과 버튼 -->
+                                    <input
+                                        type="text"
+                                        placeholder="검색어를 입력하세요"
+                                        class="search-input member-search-input"
+                                        name="companyKeyword"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="search-btn member-search-btn"
+                                    >
+                                        검색
+                                    </button>
+                                </div>
+                                <div class="filter-box member-filter-box">
+                                    <!-- 회원상태 필터 -->
+                                    <select
+                                        class="status-filter company-member-status-filter"
+                                    >
+                                        <option value="all">전체</option>
+                                        <option value="활성">활성</option>
+                                        <option value="휴면">휴면</option>
+                                        <option value="정지">정지</option>
+                                        <option value="탈퇴">탈퇴</option>
+                                    </select>
+                                    <!-- 가입기간 필터 -->
+                                    <select
+                                        class="date-filter company-member-date-filter"
+                                    >
+                                        <option value="1">전체</option> <!-- 1은 전체 조회를 위한 파라미터, 그 외의 의미는 없음.-->
+                                        <option value="7">최근 1주일</option>
+                                        <option value="30">최근 1개월</option>
+                                        <option value="90">최근 3개월</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 회원 목록 테이블 -->
+                            <div class="company-member-table-container">
+                                <table class="company-member-table">
+                                    <thead>
+                                        <tr>
+                                            <th>회원번호</th>
+                                            <th>기업명</th>
+                                            <th>사업자등록번호</th>
+                                            <th>담당자명</th>
+                                            <th>이메일</th>
+                                            <th>가입일</th>
+                                            <th>최근접속일</th>
+                                            <th>회원상태</th>
+                                            <th>회원관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 샘플 데이터 -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination company-member-pagination">
+
+                            </div>
+                        </div>
+
+                        <!-- 개인문의 관리 컨텐츠 -->
+                        <div
+                            class="personal-inquiry-management"
+                            style="display: none"
+                        >
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                class="normal-inquiry-search-filter-container normal-inquiry-filter"
+                            >
+                                <div class="search-box normal-inquiry-search">
+                                    <!-- 검색 입력창과 버튼 -->
+                                    <input
+                                        type="text"
+                                        placeholder="검색어를 입력하세요"
+                                        class="search-input normal-inquiry-search-input"
+                                        name="normalInquiryKeyword"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="search-btn normal-inquiry-search-btn"
+                                    >
+                                        검색
+                                    </button>
+                                </div>
+                                <div
+                                    class="filter-box normal-inquiry-filter-box"
+                                >
+                                    <!-- 회원상태 필터 -->
+                                    <select
+                                        class="status-filter normal-inquiry-status-filter"
+                                    >
+                                        <option value="all">전체</option>
+                                        <option value="처리대기">처리대기</option>
+                                        <option value="처리완료">처리완료</option>
+
+                                    </select>
+                                    <!-- 가입기간 필터 -->
+                                    <select
+                                        class="date-filter normal-inquiry-date-filter"
+                                    >
+                                        <option value="1">전체</option>
+                                        <option value="7">최근 1주일</option>
+                                        <option value="30">
+                                            최근 1개월
+                                        </option>
+                                        <option value="90">
+                                            최근 3개월
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 회원 목록 테이블 -->
+                            <div class="normal-inquiry-table-container">
+                                <table class="normal-inquiry-table">
+                                    <thead>
+                                        <tr>
+                                            <th>문의번호</th>
+                                            <th>문의유형</th>
+                                            <th>문의자</th>
+                                            <th>이메일</th>
+                                            <th>문의일시</th>
+                                            <th>처리상태</th>
+                                            <th>&nbsp&nbsp문의관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 샘플 데이터 -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination normal-inquiry-pagination">
+
+                            </div>
+                        </div>
+                        <!-- // 개인문의 관리 컨텐츠 끝!!!!!!!!!! -->
+
+                        <!-- 기업문의 관리 컨텐츠 -->
+                        <div
+                            class="company-inquiry-management"
+                            style="display: none"
+                        >
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                class="company-inquiry-search-filter-container company-inquiry-filter"
+                            >
+                                <div class="search-box company-inquiry-search">
+                                    <!-- 검색 입력창과 버튼 -->
+                                    <input
+                                        type="text"
+                                        placeholder="검색어를 입력하세요"
+                                        class="search-input company-inquiry-search-input"
+                                        name = "companyInquiryKeyword"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="search-btn company-inquiry-search-btn"
+                                    >
+                                        검색
+                                    </button>
+                                </div>
+                                <div
+                                    class="filter-box company-inquiry-filter-box"
+                                >
+                                    <!-- 회원상태 필터 -->
+                                    <select
+                                        class="status-filter company-inquiry-status-filter"
+                                    >
+                                        <option value="all">전체</option>
+                                        <option value="처리대기">처리대기</option>
+                                        <option value="처리완료">처리완료</option>
+
+                                    </select>
+                                    <!-- 가입기간 필터 -->
+                                    <select
+                                        class="date-filter company-inquiry-date-filter"
+                                    >
+                                        <option value="1">전체</option>
+                                        <option value="7">최근 1주일</option>
+                                        <option value="30">
+                                            최근 1개월
+                                        </option>
+                                        <option value="90">
+                                            최근 3개월
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 회원 목록 테이블 -->
+                            <div class="company-inquiry-table-container">
+                                <table class="company-inquiry-table">
+                                    <thead>
+                                        <tr>
+                                            <th>문의번호</th>
+                                            <th>문의유형</th>
+                                            <th>기업명</th>
+                                            <th>담당자명</th>
+                                            <th>문의일시</th>
+                                            <th>처리상태</th>
+                                            <th>&nbsp&nbsp문의관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <!-- 추가 샘플 데이터들... -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination company-inquiry-pagination">
+
+                            </div>
+                        </div>
+                        <!-- // 기업문의 관리 컨텐츠 끝!!!!!!!!!! -->
+
+                        <!-- 기업 신고관리 컨텐츠 -->
+                        <div class="company-report-management" style="display: none">
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                    class="company-report-search-filter-container company-report-filter"
+                            >
+                                <div class="search-box report-search">
+                                    <input
+                                            type="text"
+                                            name="keyword"
+                                            placeholder="신고자/신고기업으로 검색"
+                                            class="search-input company-report-search-input"
+                                    />
+                                    <button
+                                            type="button"
+                                            class="search-btn company-report-search-btn"
+                                    >
+                                        검색
+                                    </button>
+                                </div>
+                                <div class="filter-box company-report-filter-box">
+                                    <select
+                                            class="status-filter company-report-status-filter"
+                                    >
+                                        <option value="all" selected>전체</option>
+                                        <option value="hold">보류</option>
+                                        <option value="pending">처리중</option>
+                                        <option value="false">허위신고</option>
+                                        <option value="completed">
+                                            처리완료
+                                        </option>
+                                    </select>
+                                    <select
+                                            class="date-filter company-report-date-filter"
+                                    >
+                                        <option value="all" selected>전체</option>
+                                        <option value="week">최근 1주일</option>
+                                        <option value="month">
+                                            최근 1개월
+                                        </option>
+                                        <option value="three-month">
+                                            최근 3개월
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 신고 목록 테이블 -->
+                            <div class="company-report-table-container">
+                                <table class="company-report-table" id="company-report-table">
+                                    <thead>
+                                    <tr>
+                                        <th>신고번호</th>
+                                        <th>신고유형</th>
+                                        <th>신고대상</th>
+                                        <th>신고자</th>
+                                        <th>신고일시</th>
+                                        <th>처리상태</th>
+                                        <th>&nbsp&nbsp신고관리</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination company-report-pagination">
+                                <!--                                <button type="button" class="page-btn prev">-->
+                                <!--                                    이전-->
+                                <!--                                </button>-->
+                                <!--                                <div class="page-numbers">-->
+                                <!--                                    <button-->
+                                <!--                                        type="button"-->
+                                <!--                                        class="page-btn active"-->
+                                <!--                                    >-->
+                                <!--                                        1-->
+                                <!--                                    </button>-->
+                                <!--                                    <button type="button" class="page-btn">-->
+                                <!--                                        2-->
+                                <!--                                    </button>-->
+                                <!--                                    <button type="button" class="page-btn">-->
+                                <!--                                        3-->
+                                <!--                                    </button>-->
+                                <!--                                </div>-->
+                                <!--                                <button type="button" class="page-btn next">-->
+                                <!--                                    다음-->
+                                <!--                                </button>-->
+                            </div>
+                        </div>
+
+                        <!-- 공고 신고관리 컨텐츠 -->
+                        <div class="program-report-management" style="display: none">
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                    class="program-report-search-filter-container program-report-filter"
+                            >
+                                <div class="search-box program-report-search">
+                                    <input
+                                            type="text"
+                                            name="keyword"
+                                            placeholder="신고자/신고공고로 검색"
+                                            class="search-input program-report-search-input"
+                                    />
+                                    <button
+                                            type="button"
+                                            class="search-btn program-report-search-btn"
+                                    >
+                                        검색
+                                    </button>
+                                </div>
+                                <div class="filter-box program-report-filter-box">
+                                    <select
+                                            class="status-filter program-report-status-filter"
+                                    >
+                                        <option value="all" selected>전체</option>
+                                        <option value="hold">보류</option>
+                                        <option value="pending">처리중</option>
+                                        <option value="false">허위신고</option>
+                                        <option value="completed">
+                                            처리완료
+                                        </option>
+                                    </select>
+                                    <select
+                                            class="date-filter program-report-date-filter"
+                                    >
+                                        <option value="all" selected>전체</option>
+                                        <option value="week">최근 1주일</option>
+                                        <option value="month">
+                                            최근 1개월
+                                        </option>
+                                        <option value="three-month">
+                                            최근 3개월
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 신고 목록 테이블 -->
+                            <div class="program-report-table-container">
+                                <table class="program-report-table" id="program-report-table">
+                                    <thead>
+                                    <tr>
+                                        <th>신고번호</th>
+                                        <th>신고유형</th>
+                                        <th>신고대상</th>
+                                        <th>신고자</th>
+                                        <th>신고일시</th>
+                                        <th>처리상태</th>
+                                        <th>&nbsp&nbsp신고관리</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination program-report-pagination">
+                                <!--                                <button type="button" class="page-btn prev">-->
+                                <!--                                    이전-->
+                                <!--                                </button>-->
+                                <!--                                <div class="page-numbers">-->
+                                <!--                                    <button-->
+                                <!--                                        type="button"-->
+                                <!--                                        class="page-btn active"-->
+                                <!--                                    >-->
+                                <!--                                        1-->
+                                <!--                                    </button>-->
+                                <!--                                    <button type="button" class="page-btn">-->
+                                <!--                                        2-->
+                                <!--                                    </button>-->
+                                <!--                                    <button type="button" class="page-btn">-->
+                                <!--                                        3-->
+                                <!--                                    </button>-->
+                                <!--                                </div>-->
+                                <!--                                <button type="button" class="page-btn next">-->
+                                <!--                                    다음-->
+                                <!--                                </button>-->
+                            </div>
+                        </div>
+
+                        <div class="notice-management" id="notice" style="display: none">
+                            <!-- 상단 검색/필터 영역 -->
+                            <div
+                                    class="notice-search-filter-container notice-filter"
+                            >
+                                <div class="search-box notice-search">
+                                    <input
+                                            type="text"
+                                            placeholder="검색어를 입력하세요"
+                                            class="search-input notice-search-input"
+                                            name ="keyword"
+                                    />
+                                    <button
+                                            type="button"
+                                            class="search-btn notice-search-btn"
+                                    >
+                                        검색
+                                    </button>
+
+                                    <button type="button" class="write-button">
+                                        작성
+                                    </button>
+                                </div>
+                                <div class="filter-box notice-filter-box">
+                                    <select
+                                            class="status-filter notice-type-filter"
+                                    >
+                                        <option value="all">전체</option>
+                                        <option value="공지사항">공지사항</option>
+                                        <option value="이벤트">이벤트</option>
+                                    </select>
+                                    <select
+                                            class="date-filter notice-date-filter"
+                                    >
+                                        <option value="1">전체</option>
+                                        <option value="7">최근 1주일</option>
+                                        <option value="30">
+                                            최근 1개월
+                                        </option>
+                                        <option value="90">
+                                            최근 3개월
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 공고 목록 테이블 -->
+                            <div class="notice-table-container">
+                                <table class="notice-table">
+                                    <thead>
+                                    <tr>
+                                        <th>공지번호</th>
+                                        <th>제목</th>
+                                        <th>유형</th>
+                                        <th>등록일</th>
+                                        <th>수정일</th>
+                                        <th>공지관리</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="noticeList">
+                                    <!--                                    공지 목록 들어가야할 공간-->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 페이지네이션 -->
+
+                            <div class="p notice-pagination">
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+<!--   공지 목록 영역 -->
+
+
+
+
+                    <!-- 사이드바 토글 버튼 -->
+                    <button
+                        type="button"
+                        class="sidebar-toggle-btn sidebar-expanded"
+                    >
+                        <i class="toggle-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+<!--      공지관리 상세보기 모달-->
+        <div class="notice-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+
+            </div>
+        </div>
+
+
+        <!-- 기업 신고관리 상세보기 모달 -->
+        <div class="company-report-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+                <!-- 모달 헤더 -->
+                <div class="modal-header">
+                    <h3>신고 상세정보</h3>
+                    <button type="button" class="close-btn">
+                        <img
+                                src="/images/admin/cross.png"
+                                alt="닫기"
+                        />
+                    </button>
+                </div>
+
+                <!-- 모달 본문 -->
+                <div class="modal-body">
+                    <!-- 신고 기본 정보 -->
+
+                    <div class="company-report-info">
+                        <h4>INFO</h4>
+                        <table class="info-table">
+                            <tbody>
+                            <tr>
+                                <th>신고번호</th>
+                                <td id="company-report-id">0000001</td>
+                                <th>신고일시</th>
+                                <td id="company-report-date">2025-02-04</td>
+                            </tr>
+                            <tr>
+                                <th>신고자</th>
+                                <td id="company-report-memberName">허세웅</td>
+                                <th>신고대상</th>
+                                <td id="company-report-companyName">템프</td>
+                            </tr>
+                            <tr>
+                                <th>신고유형</th>
+                                <td colspan="3" id="company-report-reportType">
+                                    부적절한 내용
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 신고 상세 내용 -->
+                    <div class="company-report-detail">
+                        <h4>신고 상세내용</h4>
+                        <div class="detail-content" id="company-report-reportDetail">
+                            템프 공고에 적절하지 않은 텍스트가 포함되어
+                            있습니다.
+                        </div>
+                    </div>
+
+                    <!-- 처리 상태 선택 -->
+                    <div class="status-selection">
+                        <h4>처리 상태</h4>
+                        <select class="status-select company-report-status">
+                            <option value="pending">처리중</option>
+                            <option value="hold">보류</option>
+                            <option value="false">허위신고</option>
+                            <option value="completed">처리완료</option>
+                        </select>
+                    </div>
+
+                    <!-- 관리자 메모 -->
+                    <!--                    <div class="admin-memo">-->
+                    <!--                        <h4>관리자 메모</h4>-->
+                    <!--                        <textarea-->
+                    <!--                            placeholder="처리 관련 메모를 입력하세요"-->
+                    <!--                            id="admin-memo"-->
+                    <!--                        ></textarea>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+
+                    <!-- 모달 푸터 -->
+                    <div class="modal-footer">
+                        <button type="button" class="cancel-btn">취소</button>
+                        <button type="button" class="save-btn">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 공고 신고관리 상세보기 모달 -->
+        <div class="program-report-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+                <!-- 모달 헤더 -->
+                <div class="modal-header">
+                    <h3>신고 상세정보</h3>
+                    <button type="button" class="close-btn">
+                        <img
+                                src="/images/admin/cross.png"
+                                alt="닫기"
+                        />
+                    </button>
+                </div>
+
+                <!-- 모달 본문 -->
+                <div class="modal-body">
+                    <!-- 신고 기본 정보 -->
+
+                    <div class="program-report-info">
+                        <h4>INFO</h4>
+                        <table class="info-table">
+                            <tbody>
+                            <tr>
+                                <th>신고번호</th>
+                                <td id="program-report-id">0000001</td>
+                                <th>신고일시</th>
+                                <td id="program-report-date">2025-02-04</td>
+                            </tr>
+                            <tr>
+                                <th>신고자</th>
+                                <td id="program-report-memberName">허세웅</td>
+                                <th>신고대상</th>
+                                <td id="program-report-programName">템프</td>
+                            </tr>
+                            <tr>
+                                <th>신고유형</th>
+                                <td colspan="3" id="program-report-reportType">
+                                    부적절한 내용
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 신고 상세 내용 -->
+                    <div class="company-report-detail">
+                        <h4>신고 상세내용</h4>
+                        <div class="detail-content" id="program-report-reportDetail">
+                            템프 공고에 적절하지 않은 텍스트가 포함되어
+                            있습니다.
+                        </div>
+                    </div>
+
+                    <!-- 처리 상태 선택 -->
+                    <div class="status-selection">
+                        <h4>처리 상태</h4>
+                        <select class="status-select program-report-status">
+                            <option value="pending">처리중</option>
+                            <option value="hold">보류</option>
+                            <option value="false">허위신고</option>
+                            <option value="completed">처리완료</option>
+                        </select>
+                    </div>
+
+                    <!-- 모달 푸터 -->
+                    <div class="modal-footer">
+                        <button type="button" class="cancel-btn">취소</button>
+                        <button type="button" class="save-btn">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 개인문의 상세보기 모달 -->
+        <div class="normal-inquiry-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+
+            </div>
+        </div>
+
+        <!-- 기업문의 상세보기 모달 -->
+        <div class="company-inquiry-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+
+            </div>
+        </div>
+        <!-- // 기업문의 상세보기 모달 -->
+
+        <!-- 공고관리 상세보기 모달 -->
+        <div class="announce-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+
+            </div>
+        </div>
+
+        <!-- 일반회원 상세정보 모달 -->
+        <div class="normal-member-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+
+            </div>
+        </div>
+
+        <!-- 기업회원 상세정보 모달 -->
+        <div class="company-member-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+
+            </div>
+        </div>
+
+        <!-- 사업자등록증면원 이미지 뷰어 모달 -->
+        <div class="image-viewer-modal" style="display: none">
+            <div class="modal-backdrop"></div>
+            <div class="viewer-container">
+                <img src="" alt="원본 이미지" class="viewer-image" />
+                <button type="button" class="close-viewer-btn">
+                    <img src="/images/admin/cross.png" alt="닫기" />
+                </button>
+            </div>
+        </div>
+
+        <!-- JavaScript 파일 연결 -->
+        <script>
+
+
+        </script>
+        <script src="/js/admin/sidebar_each_menu_toggle.js"></script>
+        <script src="/js/admin/sidebar_toggle.js"></script>
+        <script src="/js/admin/main_contents_toggle.js"></script>
+        <script src="/js/admin/pagination.js"></script>
+        <script src="/js/admin/filter_report.js"></script>
+        <script src="/js/admin/filter_announce.js"></script>
+        <script src="/js/admin/filter_normal_member.js"></script>
+        <script src="/js/admin/filter_company_member.js"></script>
+        <script src="/js/admin/modal_report.js"></script>
+        <script src="/js/admin/modal_announce.js"></script>
+        <script src="/js/admin/modal_normal_member.js"></script>
+        <script src="/js/admin/modal_company_member.js"></script>
+        <script src="/js/admin/modal_company_certificate.js"></script>
+        <script src="/js/admin/modal_normal_inquiry.js"></script>
+        <script src="/js/admin/modal_company_inquiry.js"></script>
+        <script src="/js/admin/program_service.js"></script>
+        <script src="/js/admin/program_layout.js"></script>
+        <script src="/js/admin/program_event.js"></script>
+        <script src="/js/admin/member_service.js"></script>
+        <script src="/js/admin/member_layout.js"></script>
+        <script src="/js/admin/member_event.js"></script>
+        <script src="/js/admin/company_member_service.js"></script>
+        <script src="/js/admin/company_member_layout.js"></script>
+        <script src="/js/admin/company_member_event.js"></script>
+        <script src="/js/admin/inquiry_service.js"></script>
+        <script src="/js/admin/inquiry_layout.js"></script>
+        <script src="/js/admin/inquiry_event.js"></script>
+        <script src="/js/admin/company_inquiry_service.js"></script>
+        <script src="/js/admin/company_inquiry_layout.js"></script>
+        <script src="/js/admin/company_inquiry_event.js"></script>
+        <script src="/js/admin/filter_company_inquiry.js"></script>
+        <script src="/js/admin/notice_event.js"></script>
+        <script src="/js/admin/notice_layout.js"></script>
+        <script src="/js/admin/notice_service.js"></script>
+        <script src="/js/admin/modal_notice.js"></script>
+        <script src="/js/admin/reportLayout.js"></script>
+        <script src="/js/admin/reportService.js"></script>
+        <script src="/js/admin/reportEvent.js"></script>
+    </body>
+<script>
+</script>
+</html>

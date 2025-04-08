@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>템프 | 체험 공고 목록</title>
+    <link
+            rel="shortcut icon"
+            href="https://jumpit.saramin.co.kr/favicon.ico"
+            type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/css/main/program-list.css" />
+    <link rel="stylesheet" href="/css/member/header.css">
+</head>
+<body>
+<!-- 헤더 시작 -->
+<header th:replace="~{main/header.html :: .header-sc}"></header>
+<!-- // 헤더 끝 -->
+<!-- 메인 시작 -->
+<main class="main">
+    <div>
+        <!-- 체험 탐색 카테고리 시작 -->
+        <section class="mainCategory">
+            <h1 class="listTitle">체험 공고 탐색</h1>
+            <section class="listJobs">
+                <div class="listJobBtnWrap">
+                    <label>
+                        <input type="checkbox" value="all" class="allCategory" checked style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>전체</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="1" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>서비스업</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="2" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>제조·화학</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="3" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>IT·웹·통신</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="4" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>은행·금융업</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="5" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>미디어·디자인</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="6" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>교육업</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="7" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>의료·제약·복지</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="8" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>판매·유통</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="9" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>건설업</span>
+                        </button>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="10" class="categorySelect" style="display: none;"/>
+                        <button
+                                aria-pressed="true"
+                                type="button"
+                                value="all"
+                                class="categoryButton selectAllButton"
+                        >
+                            <span>기관·협회</span>
+                        </button>
+                    </label>
+
+
+                </div>
+            </section>
+        </section>
+        <!-- // 체험 탐색 카테고리 끝 -->
+        <!-- 메인 컨텐츠 목록 시작 -->
+        <div class="mainContentsWrapper">
+            <div class="mainContentsList">
+                <div class="mainContentCard" th:each="mainProgramListDTO : ${mainProgramListDTOS}">
+                    <a th:href="|/program/detail/${mainProgramListDTO.id}|" id="card-wrapper" class="mainContentCardWrapper">
+                        <div class="imgBox">
+                            <img
+                                    th:src="@{'/enterprise/display?path=' + ${mainProgramListDTO.filePath} + '/' + ${mainProgramListDTO.fileName}}"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dayLeft" th:text="|D-${mainProgramListDTO.dDay}|"></span>
+                            </div>
+                            <div class="count">
+                                <button type="button" class="scrapButton"
+                                        th:id="|button-${mainProgramListDTO.id}|"
+                                        th:aria-pressed="${mainProgramListDTO.scrapStatus}"
+                                        th:attr="onclick=|toggleScrap(${mainProgramListDTO.id})|, aria-pressed=${isScrapped}">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            class="scrapSVG"
+                                    >
+                                        <path
+                                                fill="#000000"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                                class="scrapPath"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span th:text="${mainProgramListDTO.CompanyName}"></span>
+                            </div>
+                            <h2 class="positionCardTitle" th:text="${mainProgramListDTO.ProgramName}">
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Spring</li>
+                                <li>· JavaScript</li>
+                                <li>· jQuery</li>
+                                <li>· Java</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 금천구</li>
+                                <li>경력 5~15년</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="mainContentCard">
+                    <a href="">
+                        <div class="imgBox">
+                            <img
+                                    src="https://cdn.jumpit.co.kr/lg/images/syyun_26773/20231329131353620_1000_720.webp"
+                                    class="img"
+                            />
+                            <div class="imgDdayBadge">
+                                <span class="dDay">D-day</span>
+                            </div>
+                            <div class="count">
+                                <button class="scrapButton">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                                fill="#222"
+                                                fill-rule="evenodd"
+                                                d="M10.725 14.71a2 2 0 0 1 2.55 0l3.975 3.289V5H6.75v12.999l3.975-3.29ZM4.75 20.123V5a2 2 0 0 1 2-2h10.5a2 2 0 0 1 2 2v15.124a1 1 0 0 1-1.638.77L12 16.25l-5.612 4.645a1 1 0 0 1-1.638-.77Z"
+                                                clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contentText">
+                            <div class="companyName">
+                                <span>인피니티익스체인지코리아</span>
+                            </div>
+                            <h2 class="positionCardTitle">
+                                블록체인 지갑 및 Defi 서비스 개발자
+                            </h2>
+                            <!-- 요구 스킬을 포지션 카테고리로 바꿔도? -->
+                            <ul class="requiredSkill">
+                                <li>Java</li>
+                                <li>· Go</li>
+                                <li>· Rust</li>
+                                <li>· Defi</li>
+                                <li>· REST API</li>
+                            </ul>
+                            <ul class="companyLocation">
+                                <li>서울 강남구</li>
+                                <li>경력 2~8년</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- // 메인 컨텐츠 목록 끝 -->
+    </div>
+</main>
+<!-- // 메인 끝 -->
+<!-- 푸터 시작 -->
+<!-- // 푸터 끝 -->
+</body>
+<script src="/js/main/program-list.js"></script>
+<script src="/js/member/mypage-all.js"></script>
+<script src="/js/main/program_list_service.js"></script>
+<script src="/js/main/program_list_event.js"></script>
+<script src="/js/main/program_list_layout.js"></script>
+<script src="/js/main/scrap.js"></script>
+<script th:inline="javascript">
+    const memberData = /*[[${session.member}]]*/ null;
+</script>
+<!--<script th:if="${param.refresh}" th:inline="javascript">-->
+<!--    // window.location.href = window.location.pathname; // 현재 페이지 새로고침-->
+<!--    //-->
+<!--    // window.addEventListener("load", function () {-->
+<!--    //     const urlParams = new URLSearchParams(window.location.search);-->
+<!--    //     if (urlParams.get("refresh") === "true") {-->
+<!--    //         window.location.href = "/program/list"; // 기본 리스트로 새로고침-->
+<!--    //     }-->
+<!--    // });-->
+<!--</script>-->
+</html>
