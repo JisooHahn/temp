@@ -22,9 +22,8 @@
 ## 3. 프로젝트 사용 툴
 
 -   Java
--   Java Script
--   tomcat
--   jQuery
+-   JavaScript
+-   Apache Tomcat
 -   ORACLE
 -   Spring Boot
 -   Visual Studio Code
