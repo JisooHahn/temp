@@ -149,9 +149,11 @@ document.addEventListener("visibilitychange", () => {
 
 📌 마우스를 내비게이션 바로 옮길 때 메뉴가 너무 빨리 꺼져버림
 
+```
 memberButton.addEventListener("mouseleave", () => {
     hideDiv(); // 마우스를 떼자마자 바로 창을 숨김
 });
+```
 <문제 코드><br>
 헤더의 버튼위에 마우스를 가져다 대면 추가 nav가 뜨게 하려고 했는데, 이 추가된 nav쪽에 마우스를 가져다 대려 하면 창이 바로 꺼져서 선택하기 어렵다는 문제가 발생했다.
 
