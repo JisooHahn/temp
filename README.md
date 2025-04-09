@@ -127,7 +127,15 @@
 
 ### 2. 해결
 
-![완성 코드 이미지](images/21.png)<br>
+```
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+        clearInterval(autoSlideInterval);
+    } else {
+        autoSlideInterval = setInterval(autoSlide, 4000);
+    }
+});
+```
 <완성 코드><br>
 🔍document.visibilitychange 이벤트를 활용하여 브라우저 탭 상태를 감지시켰다.<br>
 
@@ -141,7 +149,9 @@
 
 📌 마우스를 내비게이션 바로 옮길 때 메뉴가 너무 빨리 꺼져버림
 
-![문제 코드 이미지](images/25.png)<br>
+memberButton.addEventListener("mouseleave", () => {
+    hideDiv(); // 마우스를 떼자마자 바로 창을 숨김
+});
 <문제 코드><br>
 헤더의 버튼위에 마우스를 가져다 대면 추가 nav가 뜨게 하려고 했는데, 이 추가된 nav쪽에 마우스를 가져다 대려 하면 창이 바로 꺼져서 선택하기 어렵다는 문제가 발생했다.
 
@@ -151,8 +161,15 @@ button과 nav 사이에 약간의 공간이 있으면
 마우스가 그 사이를 지나갈 때 바로 창이 꺼지는 문제가 생겼다.
 
 ### 2. 해결
-
-![완성 코드 이미지](images/27.png)<br>
+```
+const checkMouseLeave = () => {
+    setTimeout(() => {
+        if (!memberButton.matches(":hover") && !memberNav.matches(":hover")) {
+            hideDiv(); // 일정 시간 뒤에도 hover가 아니면 창을 닫음
+        }
+    }, 100); // 100ms 딜레이
+};
+```
 <완성 코드><br>
 🔍 `setTimeout()`으로 100ms의 딜레이를 주고, hover 범위를 버튼 말고 추가되는 nav에도 추가했다.<br>
 
@@ -165,7 +182,12 @@ button과 nav 사이에 약간의 공간이 있으면
 
 📌 카테고리 버튼을 5개 이상 선택할 수 없도록 제어하는 기능이 제대로 작동하지 않음
 
-![문제 코드 이미지](images/23.png)<br>
+```
+if (buttonCount >= 5) {
+    alert("직무는 5개까지 선택 가능합니다.");
+}
+button.setAttribute("aria-pressed", isPressed ? "false" : "true");
+```
 <문제 코드><br>
 개별 카테고리 버튼을 클릭할 때마다 aria-pressed 값을 토글하면서 선택된 항목 개수 제한을 걸고자 했다.
 
@@ -176,7 +198,16 @@ alert가 떠도 버튼 상태는 계속 바뀌어서 6개 이상 선택이 가�
 
 ### 2. 해결
 
-![완성 코드 이미지](images/24.png)<br>
+```
+if (!isPressed && buttonCount >= 5) {
+                alert("직무는 5개까지 선택 가능합니다");
+                return;
+            }
+
+            button.setAttribute("aria-pressed", isPressed ? "false" : "true");
+        });
+    });
+```
 <완성 코드><br>
 🔍버튼이 아직 눌리지 않은 상태에서 5개 이상 선택하려 할 때만 `return`<br>
 
@@ -190,7 +221,19 @@ alert가 떠도 버튼 상태는 계속 바뀌어서 6개 이상 선택이 가�
 
 📌 radio를 클릭해도 스타일이 바뀌지 않음
 
-![문제 코드 이미지](images/28.png)<br>
+```
+radios.forEach((radio, index) => {
+    radio.addEventListener("click", () => {
+        resumeBoxes.forEach((box) => {
+            box.style.border = "1px solid rgb(228, 228, 228)";
+        });
+
+        if (resumeBoxes[index]) {
+            resumeBoxes[index].style.border = "1px solid rgb(0, 221, 109)";
+        }
+    });
+});
+```
 <문제 코드><br>
 라디오 버튼을 클릭하면 선택된 항목에 초록색 테두리를 주는 UI를 구성했지만, 연속 클릭 시 아무 반응이 없는 문제가 발생
 
@@ -199,8 +242,21 @@ alert가 떠도 버튼 상태는 계속 바뀌어서 6개 이상 선택이 가�
 radio를 체크하면 체크한 radio가 있는 박스의 테두리가 초록, 선택 안 한 radio의 박스 테두리가 회색이 되어야 하는데, 다른 radio를 선택해도 스타일이 변경이 없음.
 
 ### 2. 해결
+```
+radios.forEach((radio, index) => {
+    radio.addEventListener("change", () => {
+        // 모든 resumeBox의 테두리 초기화
+        resumeBoxes.forEach((box) => {
+            box.style.border = "1px solid rgb(228, 228, 228)"; // 기본 테두리 색으로 초기화
+        });
 
-![완성 코드 이미지](images/30.png)<br>
+        // 선택된 radio에 해당하는 resumeBox 스타일 변경
+        if (resumeBoxes[index]) {
+            resumeBoxes[index].style.border = "1px solid rgb(0, 221, 109)"; // 선택된 것 강조
+        }
+    });
+});
+```
 <완성 코드><br>
 🔍 이벤트를 `click` → `change`로 변경하여, 값이 바뀔 때만 동작하도록 수정했다.<br>
 
@@ -211,7 +267,18 @@ radio를 체크하면 체크한 radio가 있는 박스의 테두리가 초록, �
 
 📌 페이지 하단에 도달했을 때 버튼이 나타나지 않음
 
-![문제 코드 이미지](images/31.png)<br>
+```
+window.addEventListener("scroll", () => {
+    if (
+        window.innerHeight + window.scrollTop >=
+        document.documentElement.scrollHeight
+    ) {
+        gotoTopButton.classList.add("show");
+    } else {
+        gotoTopButton.classList.remove("show");
+    }
+});
+```
 <문제 코드><br>
 메인 페이지에서 사용자가 스크롤을 끝까지 내리면 "맨 위로" 버튼이 부드럽게 나타나도록 만들고자 했지만, 아무리 스크롤을 내려도 버튼이 보이지 않았다.
 
@@ -220,8 +287,20 @@ radio를 체크하면 체크한 radio가 있는 박스의 테두리가 초록, �
 window.scrollTop이라는 속성을 사용했는데, 아무 동작도 하지 않았다.
 
 ### 2. 해결
-
-![완성 코드 이미지](images/33.png)<br>
+```
+// 스크롤 감지
+window.addEventListener("scroll", () => {
+    // 페이지 하단에 도달했는지 확인
+    if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight
+    ) {
+        gotoTopButton.classList.add("show"); // 애니메이션으로 보이기
+    } else {
+        gotoTopButton.classList.remove("show"); // 애니메이션으로 숨기기
+    }
+});
+```
 <완성 코드><br>
 🔍 window.scrollTop을 window.scrollY로 수정했다.<br>
 
@@ -234,7 +313,17 @@ window.scrollTop이라는 속성을 사용했는데, 아무 동작도 하지 않
 
 📌 기업회원 회원가입 추가 정보 입력 후, 서브키 테이블이 insert가 되지 않고 sql 에러 발생
 
-![잘못된 코드 이미지](images/6.png)<br>
+```
+    <insert id="insert">
+        INSERT INTO TBL_MEMBER
+        (ID, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PROFILE_PATH)
+        VALUES(SEQ_MEMBER.NEXTVAL, #{memberName}, #{memberEmail}, #{memberProfilePath})
+    </insert>
+    <insert id="insertCompanyMemberAdmin">
+        INSERT INTO TBL_COMPANY_MEMBER (ID, COMPANY_ID, COMPANY_MEMBER_AUTHORITY, COMPANY_MEMBER_DEPARTMENT)
+        VALUES (#{id}, #{companyId}, '관리자', #{companyMemberDepartment})
+    </insert>
+```
 <잘못된 코드><br>
 슈퍼키 테이블인 TBL_MEMBER에 먼저 insert 한 후 서브키 테이블인 TBL_COMPANY_MEMBER에 입력을 하려고 했다. TBL_MEMBER에 입력을 하는 쿼리에 문제가 없어보였으나 기업 회원가입 정보를 입력해도 가입 처리가 안 되었다.
 
@@ -244,7 +333,20 @@ window.scrollTop이라는 속성을 사용했는데, 아무 동작도 하지 않
 
 ### 2. 해결
 
-![완성 코드 이미지](images/7.png)<br>
+```
+    <insert id="insert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="long">
+            SELECT SEQ_MEMBER.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_MEMBER
+        (ID, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PROFILE_PATH)
+        VALUES(#{id}, #{memberName}, #{memberEmail}, #{memberProfilePath})
+    </insert>
+    <insert id="insertCompanyMemberAdmin">
+        INSERT INTO TBL_COMPANY_MEMBER (ID, COMPANY_ID, COMPANY_MEMBER_AUTHORITY, COMPANY_MEMBER_DEPARTMENT)
+        VALUES (#{id}, #{companyId}, '관리자', #{companyMemberDepartment})
+    </insert>
+```
 <완성 코드><br>
 🔍insert 구문에 `selectKey`를 추가하여, INSERT 이후 생성된 키 값을 자동으로 가져올 수 있도록 설정했다.
 
@@ -286,7 +388,19 @@ window.scrollTop이라는 속성을 사용했는데, 아무 동작도 하지 않
 
 📌 Gmail SMTP를 이용해 메일을 전송하려 했는데, 메일 전송이 제대로 되지 않는 문제가 생김.
 
-![잘못된 코드 이미지](images/12.png)<br>
+```
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: luna99954
+    password: [내 계정 비밀번호]
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+```
 <잘못된 설정><br>
 입력한 비밀번호가 틀린 건 아니었기에 처음엔 의심하지 못하고 코드만 계속 확인함.
 
@@ -297,7 +411,19 @@ Gmail SMTP 서버에 로그인 시도 중 인증 오류 발생.
 
 ### 2. 해결
 
-![완성 코드 이미지](images/14.png)<br>
+```
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: luna99954
+    password: aoqe ahek dcnd asom #16자리 앱 비밀번호
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+```
 <완성 부분><br>
 🔍Gmail 계정에서 2단계 인증을 설정하고 앱 비밀번호를 발급받았다. 발급된 16자리 앱 비밀번호를 application.yml에 적용했다.
 
@@ -311,7 +437,22 @@ Gmail SMTP 서버에 로그인 시도 중 인증 오류 발생.
 
 📌 기업 신고 목록 조회 시 데이터가 출력이 안 됨
 
-![문제 코드 이미지](images/15.png)<br>
+```
+        // 서버에 요청(fetch)
+        console.log("Fetch 시작");
+        const response = await fetch(path);
+
+        // 응답 데이터를 JSON 형태로 반환
+        const data = await response.json();
+        const companyReportListData = data;
+        // 콜백 함수가 존재한다면
+        if(callback){
+            // 데이터를 전달해 실행
+            console.log("콜백 실행됨")
+            callback(companyReportListData);
+        }
+    }
+```
 <문제 코드><br>
 REST를 통해 동기적으로 기업 신고목록 데이터를 json의 fetch 형식으로 받고 관리자 화면에 페이지네이션과 띄우려 했음.
 
@@ -324,7 +465,23 @@ fetch를 받는 json 링크에선 데이터 조회가 가능했으나, 화면에
 
 ### 2. 해결
 
-![해결 코드](images/17.png)<br>
+```
+        // 서버에 요청(fetch)
+        console.log("Fetch 시작");
+        const response = await fetch(path);
+
+        // 응답 데이터를 JSON 형태로 반환
+        const data = await response.json();
+        const companyReportListData = data.companyReports;
+        const companyPagination = data.pagination;
+        // 콜백 함수가 존재한다면
+        if(callback){
+            // 데이터를 전달해 실행
+            console.log("콜백 실행됨")
+            callback(companyReportListData, companyPagination);
+        }
+    }
+```
 <해결 코드><br>
 🔍 문제의 핵심은 서버로부터 받아온 JSON 응답의 구조를 정확히 파악하지 않고, 전체 응답 객체를 그대로 콜백에 넘겨줬다는 점이었다.
 
@@ -338,7 +495,13 @@ fetch를 받는 json 링크에선 데이터 조회가 가능했으나, 화면에
 
 📌 JS로 생성된 버튼에 이벤트가 작동하지 않음
 
-![문제 코드 이미지](images/18.png)<br>
+```
+// 상세보기 버튼이 js에서 생성된거라 그냥 클래스명으로 선택하려니까 이벤트가 발동안됨..
+document.querySelector(".detail-btn").addEventListener("click", (e) => {
+        const reportId = e.target.getAttribute("id");  // id 가져오기
+        openCompanyReportModal(reportId);  // 모달 열기
+});
+```
 <문제 코드><br>
 기업 신고 목록 테이블이 동적으로 렌더링될 때, 각 항목마다 "상세보기" 버튼을 만들고 이벤트를 연결하려 했었다.
 
@@ -350,7 +513,15 @@ fetch를 받는 json 링크에선 데이터 조회가 가능했으나, 화면에
 
 ### 2. 해결
 
-![해결 코드](images/19.png)<br>
+```
+document.querySelector(".detail-btn").addEventListener("click", (e) => {
+    // 클릭한 대상이 'detail-btn' 클래스가 있는 버튼인지 확인
+    if (e.target && e.target.classList.contains("detail-btn")) {
+        const reportId = e.target.getAttribute("id");  // id 가져오기
+        openCompanyReportModal(reportId);  // 모달 열기
+    }
+});
+```
 <해결 화면><br>
 🔍 .detail-btn 버튼이 동적으로 생성되더라도,
 부모인 #company-report-table tbody는 처음부터 존재하므로 이벤트를 위임할 수 있다.<br>
