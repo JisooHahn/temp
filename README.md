@@ -363,7 +363,18 @@ window.addEventListener("scroll", () => {
 
 📌 카카오 로그인 API 연동 중 Redirect URI 오류 발생
 
-![문제 코드 이미지](images/10.png)<br>
+```
+            String redirectURI = "http://localhost:10000/kakao/login?type=" + type;
+            log.info("[KAKAO] redirect_uri: {}", redirectURI);
+
+            connection.setRequestMethod("POST");
+            connection.setDoOutput(true);
+
+            stringBuilder.append("grant_type=authorization_code");
+            stringBuilder.append("&client_id=87bef4c36fab14d5714ce773bdd6f030");
+            stringBuilder.append("&redirect_uri=" + redirectURI);
+            stringBuilder.append("&code=" + code);
+```
 <문제 코드><br>
 기업회원과 개인회원 구분을 위해 type=company 또는 type=personal을 파라미터로 추가해 인가 코드를 요청했음.
 
