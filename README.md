@@ -527,7 +527,7 @@ document.querySelector(".detail-btn").addEventListener("click", (e) => {
 ### 2. 해결
 
 ```
-document.querySelector(".detail-btn").addEventListener("click", (e) => {
+document.querySelector("#company-report-table tbody").addEventListener("click", (e) => {
     // 클릭한 대상이 'detail-btn' 클래스가 있는 버튼인지 확인
     if (e.target && e.target.classList.contains("detail-btn")) {
         const reportId = e.target.getAttribute("id");  // id 가져오기
